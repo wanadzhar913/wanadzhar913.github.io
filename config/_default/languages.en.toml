@@ -1,0 +1,22 @@
+locale = "en"
+label = "English"
+weight = 1
+title = "Faiq Adzlan"
+
+[params]
+  displayName = "English"
+  isoCode = "en"
+  rtl = false
+  dateFormat = "January 2, 2006"
+  description = "Navigating Dilemmas & Deficiencies"
+
+[params.author]
+  name = "Faiq Adzlan"
+  headline = "Navigating Dilemmas & Deficiencies"
+  bio = "."
+  links = [
+    { linkedin = "https://www.linkedin.com/in/wan-adzhar-faiq-adzlan-19a27baa/" },
+    { github = "https://github.com/wanadzhar913" },
+    { x-twitter = "https://x.com/FaiqAdzlan" },
+    { rss = "/index.xml" },
+  ]

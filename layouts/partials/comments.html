@@ -1,0 +1,95 @@
+{{/* GitHub CTA — subtle terminal prompt that follows the theme */}}
+<div class="cta-box">
+  <a href="https://github.com/wanadzhar913" target="_blank" rel="noopener noreferrer" class="cta-link">
+    <span class="cta-dollar">$</span>
+    <span class="cta-cmd">open</span>
+    <span>github follow --user wanadzhar913</span>
+    <span class="cta-cursor"></span>
+  </a>
+</div>
+
+<style>
+.cta-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 12px;
+  margin-bottom: 30px;
+  border: 1px solid rgba(120, 120, 120, 0.25);
+  border-radius: 8px;
+  background: rgba(120, 120, 120, 0.06);
+  font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  font-size: 14px;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.cta-box:hover {
+  border-color: rgba(120, 120, 120, 0.45);
+  background: rgba(120, 120, 120, 0.10);
+}
+.cta-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: inherit;
+  text-decoration: none;
+  opacity: 0.8;
+}
+.cta-box:hover .cta-link { opacity: 1; }
+.cta-dollar { color: var(--color-primary-500, #8b5cf6); font-weight: bold; }
+.cta-cmd { opacity: 0.7; }
+.cta-cursor {
+  display: inline-block;
+  width: 7px;
+  height: 1.1em;
+  background-color: currentColor;
+  vertical-align: middle;
+  opacity: 0.6;
+  animation: cta-blink 1s step-end infinite;
+}
+@keyframes cta-blink {
+  from, to { opacity: 0.6; }
+  50% { opacity: 0; }
+}
+</style>
+
+{{/* Giscus comments — synced to Blowfish's light/dark appearance */}}
+<script src="https://giscus.app/client.js"
+        data-repo="wanadzhar913/wanadzhar913.github.io"
+        data-repo-id="R_kgDOTdP1SQ"
+        data-category="Blog"
+        data-category-id="DIC_kwDOTdP1Sc4DBhXD"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="dark"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script>
+<script>
+(function () {
+  function giscusTheme() {
+    return document.documentElement.classList.contains("dark") ? "dark" : "light";
+  }
+  function setInitialTheme() {
+    var s = document.querySelector('script[src="https://giscus.app/client.js"]');
+    if (s) s.setAttribute("data-theme", giscusTheme());
+  }
+  function sendTheme() {
+    var frame = document.querySelector("iframe.giscus-frame");
+    if (!frame) return;
+    frame.contentWindow.postMessage(
+      { giscus: { setConfig: { theme: giscusTheme() } } },
+      "https://giscus.app"
+    );
+  }
+  setInitialTheme();
+  // Re-sync when Blowfish toggles the `.dark` class on <html>
+  new MutationObserver(sendTheme).observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["class"],
+  });
+})();
+</script>
