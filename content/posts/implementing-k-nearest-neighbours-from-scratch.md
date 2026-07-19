@@ -8,6 +8,8 @@ ShowToc: true
 TocOpen: true
 ---
 
+{{< katex >}}
+
 All code for this experiment can be found [here](https://github.com/wanadzhar913/interview_prep/tree/master/ml_concepts/00_k_nearest_neighbours).
 
 ---
@@ -34,13 +36,13 @@ Given a query point:
 
 I used [Euclidean distance](https://www.datacamp.com/tutorial/euclidean-distance)*:
 
-```math
+$$
 d(x, y) = \sqrt{(x_1 - y_1)^2 + (x_2 - y_2)^2 + \cdots + (x_n - y_n)^2}
-```
+$$
 
 After skimming [scikit-learn’s neighbours code](https://github.com/scikit-learn/scikit-learn/blob/d3898d9d5/sklearn/neighbors/_classification.py#L71-L78), the interesting bit is not the vote itself — it’s how they avoid a full scan when they can. That pushed me to compare brute force against a KD-tree.
 
-***NOTE:** Super sorry if the LaTeX doesn't render! 😭*
+***NOTE:** Super sorry if the LaTeX doesn't render!*
 
 ## Helpers
 
