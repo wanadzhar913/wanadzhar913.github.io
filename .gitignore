@@ -1,4 +1,6 @@
-/.hugo_build.lock
-/.idea/
-/public/
+/node_modules/
+/dist/
 /.preview/
+/.idea/
+/Profile.pdf
+*.tsbuildinfo
