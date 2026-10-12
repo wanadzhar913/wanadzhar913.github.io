@@ -3,12 +3,8 @@ title: "Implementing K-Nearest Neighbours from Scratch: Brute Force vs KD-tree"
 description: "Notes from building brute-force and KD-tree KNN in NumPy/SciPy, then timing both on the Iris dataset."
 date: 2026-07-19
 tags: ["Python", "NumPy", "KD-tree"]
-categories: Machine Learning
-ShowToc: true
-TocOpen: true
+tag: Tech
 ---
-
-{{< katex >}}
 
 All code for this experiment can be found [here](https://github.com/wanadzhar913/interview_prep/tree/master/ml_concepts/00_k_nearest_neighbours).
 
@@ -29,9 +25,9 @@ I also include a [from-scratch KD-tree build/query](#appendix-kd-tree-from-scrat
 Given a query point:
 
 1. Measure its distance to every training point.
-2. Keep the closest \(k\) neighbours.
+2. Keep the closest $k$ neighbours.
 3. Aggregate those neighbours:
-   - **Classification:** majority label among the \(k\) neighbours.
+   - **Classification:** majority label among the $k$ neighbours.
    - **Regression:** mean of the neighbours’ target values (not distances).
 
 I used [Euclidean distance](https://www.datacamp.com/tutorial/euclidean-distance)*:
@@ -67,7 +63,7 @@ def euclidean_distance(x1: np.ndarray, x2: np.ndarray) -> float:
 
 ## Brute-force KNN
 
-Fit just stores the training set. Predict scans every row, takes the \(k\) nearest, then votes (classification) or averages (regression).
+Fit just stores the training set. Predict scans every row, takes the $k$ nearest, then votes (classification) or averages (regression).
 
 ```python
 class KNNClassification:
@@ -108,11 +104,11 @@ class KNNRegression:
         return np.mean(k_nearest_targets)
 ```
 
-This is the baseline I care about understanding. It is also \(O(n)\) per query before you even sort, so it gets expensive once \(n\) grows.
+This is the baseline I care about understanding. It is also $O(n)$ per query before you even sort, so it gets expensive once $n$ grows.
 
 ## Faster search with SciPy’s KDTree
 
-Same API, different neighbour lookup. On `fit`, build a tree over `X`; on predict, `query` for the \(k\) nearest indices.
+Same API, different neighbour lookup. On `fit`, build a tree over `X`; on predict, `query` for the $k$ nearest indices.
 
 ```python
 from scipy.spatial import KDTree
@@ -235,7 +231,7 @@ Same accuracy, roughly an order of magnitude faster with the tree — even on Ir
 - Brute-force KNN is short and honest about what the algorithm is doing.
 - Regression vs classification only changes the aggregate step (mean vs majority vote).
 - KD-trees are worth wiring in when neighbour search dominates; SciPy makes that a small change if you already have a `fit` / `predict` shell.
-- Next time I would time on a larger \(n\), and average over a few runs (or use `timeit`), before claiming a speedup number.
+- Next time I would time on a larger $n$, and average over a few runs (or use `timeit`), before claiming a speedup number.
 
 Thanks so much for reading gang!
 
@@ -249,7 +245,7 @@ Thanks so much for reading gang!
 
 ## Appendix: KD-tree from scratch
 
-Below is a minimal build + nearest-neighbour query I used to understand the structure SciPy is hiding. It finds a single nearest neighbour (not the full \(k\)-NN heap you’d want in production), and it works on a small 2D example.
+Below is a minimal build + nearest-neighbour query I used to understand the structure SciPy is hiding. It finds a single nearest neighbour (not the full $k$-NN heap you’d want in production), and it works on a small 2D example.
 
 - **Build idea:** at each depth, sort on one axis, put the median in the node, recurse left/right on the remaining points.
 - **Query idea:** walk the promising child first, then only check the other child if the splitting plane is close enough that a nearer point could still live there.
