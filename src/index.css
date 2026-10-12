@@ -1,0 +1,31 @@
+@import 'katex/dist/katex.min.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-[#fafafa] text-gray-800 antialiased dark:bg-[#1a1a1a] dark:text-gray-300;
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+}
+
+.font-serif {
+  font-family: Georgia, 'Times New Roman', serif;
+}
+
+.prose-post { @apply text-[15px] leading-7; }
+.prose-post h1 { @apply mb-4 mt-10 text-2xl font-medium text-gray-900 dark:text-white; }
+.prose-post h2 { @apply mb-3 mt-10 text-xl font-medium text-gray-900 dark:text-gray-100; }
+.prose-post h3 { @apply mb-2 mt-8 text-lg font-medium text-gray-900 dark:text-gray-100; }
+.prose-post p { @apply mb-5; }
+.prose-post a { @apply font-medium text-blue-600 underline decoration-blue-300 underline-offset-[3px] dark:text-blue-400 dark:decoration-blue-800; }
+.prose-post ul { @apply mb-5 list-disc pl-6; }
+.prose-post ol { @apply mb-5 list-decimal pl-6; }
+.prose-post li { @apply mb-1; }
+.prose-post hr { @apply my-8 border-gray-200 dark:border-gray-700; }
+.prose-post img { @apply mx-auto my-6 h-auto max-w-full rounded-lg; }
+.prose-post blockquote { @apply mb-5 border-l-2 border-gray-300 pl-4 italic dark:border-gray-600; }
+.prose-post :not(pre) > code { @apply rounded bg-gray-100 px-1.5 py-0.5 text-[13px] dark:bg-[#2a2a2a]; }
+.prose-post pre { @apply mb-5 overflow-x-auto rounded-lg bg-gray-50 p-4 text-[13px] leading-6 dark:bg-[#2a2a2a]; }
+.prose-post table { @apply mb-5 block w-full overflow-x-auto text-sm; }
+.prose-post th, .prose-post td { @apply border border-gray-200 px-3 py-1.5 dark:border-gray-700; }
+.prose-post .katex-display { @apply overflow-x-auto overflow-y-hidden py-1; }
